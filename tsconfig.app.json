@@ -31,6 +31,7 @@
       "@store/*": ["src/store/*"],
       "@services/*": ["src/services/*"],
       "@constant/*": ["src/constant/*"],
+      "@public/*": ["public/*"],
     },
   },
 

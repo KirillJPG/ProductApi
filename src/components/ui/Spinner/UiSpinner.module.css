@@ -1,0 +1,23 @@
+.spinner{
+    animation: infinite spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.gray{
+    fill: var(--gray);
+}
+.primary{
+    fill: var(--primary);
+}
+.light{
+    fill: var(--light);
+}
+.white{
+    fill: var(--white);
+}
+@keyframes spin {
+    0%{
+        rotate: 0deg;
+    }
+    100%{
+        rotate: 360deg;
+    }
+}

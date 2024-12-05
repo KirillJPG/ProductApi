@@ -14,6 +14,7 @@ export default defineConfig({
       '@store': path.resolve(__dirname, './src/store'),
       '@services': path.resolve(__dirname, './src/services'),
       '@constant': path.resolve(__dirname, './src/constant'),
+      '@public': path.resolve(__dirname, './public'),
     },
   },
   
