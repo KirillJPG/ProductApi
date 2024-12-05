@@ -1,0 +1,9 @@
+.link{
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: var(--white);
+    transition: .3s;
+}
+.link:hover{
+    filter: brightness(.4);
+}

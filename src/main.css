@@ -1,0 +1,10 @@
+*{
+    font-family: "Ubuntu",sans-serif;
+}
+:root{
+    --primary:#004a7c;
+    --light:#005691;
+    --gray:#e8f1f5;
+    --white:#fafafa;
+}
+
