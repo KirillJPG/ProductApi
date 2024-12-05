@@ -1,10 +1,13 @@
 import { useState } from 'react'
+import { Route, Routes } from 'react-router'
 
 function App() {
   return (
-    <div className="">
+    <Routes>
+      <Route index element={}>
 
-    </div>
+      </Route>
+    </Routes>
   )
 }
 
