@@ -33,6 +33,7 @@
       "@constant/*": ["src/constant/*"],
       "@public/*": ["public/*"],
     },
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
 
   "include": ["src"],

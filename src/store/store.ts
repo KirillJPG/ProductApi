@@ -3,6 +3,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist'
 import storage from "redux-persist/lib/storage"
 import { productReducer } from './slice/Product'
+import { postService } from '@/service/Product.service'
 
 
 const persistConfig = {
@@ -11,7 +12,8 @@ const persistConfig = {
   }
 
 const roodReducer = combineReducers({
-  product:productReducer
+  product:productReducer,
+  [postService.reducerPath]:postService.reducer
 })
 const persistedReducer = persistReducer(persistConfig,roodReducer)
 
@@ -22,7 +24,7 @@ export const store = configureStore({
             serializableCheck: {
              ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
-    }),
+    }).concat(postService.middleware),
 })
 export const persistore = persistStore(store)
 

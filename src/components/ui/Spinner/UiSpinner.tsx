@@ -22,6 +22,6 @@ export function UiSpinner({color="primary"}:{color?:color}){
     }
 
     return (
-        <SpinnerIcon width={32} height={32} className={clsx(style.spinner,styleLink)}/>
+        <SpinnerIcon width={48} height={48} className={clsx(style.spinner,styleLink)}/>
     )
 }
