@@ -9,6 +9,7 @@ export function Header(){
             <Wrapper>
                 <div className={style.links}>
                     <UiLink color="gray" to={links.home}>Home</UiLink>
+                    <UiLink color="gray" to={links.products}>Products</UiLink>
                     <UiLink color="gray" to={links.create}>Create</UiLink>
                 </div>
             </Wrapper>

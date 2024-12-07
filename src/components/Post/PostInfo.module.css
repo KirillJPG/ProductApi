@@ -1,0 +1,8 @@
+.info{
+    display: grid;
+    gap: 20px;
+    grid-auto-rows: max-content;
+}
+.title{
+    font-size: 2.5rem;
+}

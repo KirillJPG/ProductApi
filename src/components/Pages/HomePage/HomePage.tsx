@@ -1,7 +1,10 @@
-import { PostList } from "@/components/Post/PostList"
+import { lazy } from "react"
+import style from "./HomePage.module.css"
 
-export function HomePage(){
+export default function HomePage(){
     return (
-        <PostList />
+        <div className={style.home}>
+           <div className={style.title}> Home page</div>
+        </div>
     )
 }

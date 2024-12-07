@@ -22,6 +22,10 @@ export const postService = createApi({
             }),
             invalidatesTags:["post"],
         }),
+        getPostById:build.query<Post,any>({
+            query:(id)=>"/"+id,
+            providesTags:["post"],           
+        }),
         editPost:build.mutation<Post, FormEditPost>({
             query:(body)=>({
                 url:"/"+body.id,
@@ -40,4 +44,4 @@ export const postService = createApi({
     }),
 
 })
-export const {useCreatePostMutation,useEditPostMutation,useGetListPostsQuery} = postService
+export const {useCreatePostMutation,useEditPostMutation,useGetListPostsQuery,useGetPostByIdQuery} = postService
