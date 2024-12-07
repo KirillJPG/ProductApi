@@ -44,4 +44,4 @@ export const postService = createApi({
     }),
 
 })
-export const {useCreatePostMutation,useEditPostMutation,useGetListPostsQuery,useGetPostByIdQuery} = postService
+export const {useCreatePostMutation,useEditPostMutation,useGetListPostsQuery,useGetPostByIdQuery,useDeletePostMutation} = postService

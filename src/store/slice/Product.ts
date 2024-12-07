@@ -1,17 +1,14 @@
-import { Post } from '@/model/Post'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type Filter =  "like" | "all"
 
 export interface productState {
-  post:Post[],
   page:number,
   likes:number[],
   filter:Filter
 }
 
 const initialState: productState = {
-  post:[],
   likes:[],
   page:1,
   filter:"all"
@@ -21,14 +18,16 @@ export const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    setPost(state,{payload}:PayloadAction<Post[]>){
-      state.post = payload
-    },
     setPage(state,{payload}:PayloadAction<number>){
       state.page = payload
     },
     setLike(state,{payload}:PayloadAction<number>){
-      state.likes.push(payload)
+      if (state.likes){
+        state.likes.push(payload)
+      }else{
+        state.likes = []
+        state.likes.push(payload)
+      }
     },
     setFilter(state,{payload}:PayloadAction<Filter>){
       state.filter = payload

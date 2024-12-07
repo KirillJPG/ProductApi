@@ -1,0 +1,13 @@
+.action{
+    transition: .3s;
+    cursor: pointer;
+}
+.action:hover{
+    filter: brightness(.5);
+}
+.liked{
+    fill: red;
+}
+.liking{
+    fill: gray;
+}

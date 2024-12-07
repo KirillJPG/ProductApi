@@ -1,0 +1,10 @@
+.delete{
+    transition: .4s;
+    fill: gray;
+}
+.action{
+    cursor: pointer;
+}
+.action:hover  .delete{
+    fill: red;
+}

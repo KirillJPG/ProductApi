@@ -6,10 +6,11 @@ import { Loading } from "../ui/Loading/Loading"
 import { PostCard } from "./PostCard"
 import { BadRequest } from "@/model/BadRequest"
 
+
 export function PostList(){
     const page = useTSelector(state=>state.product.page)
     const {data,isLoading,isError,error} = useGetListPostsQuery(page,{pollingInterval:60000})
-    console.log(data)
+
     if (isLoading){
         return (
             <Loading />
@@ -20,6 +21,12 @@ export function PostList(){
             <ErrorRequest error={error as BadRequest}/>
         )
     }
+    if (data == undefined){
+        return <div className={style.posts}>
+            <div className={style.title}>Not found posts</div>
+        </div>
+    }
+
     return (
         <div className={style.posts}>
             <div className={style.title}>List Post</div>
