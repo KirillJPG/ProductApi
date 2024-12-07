@@ -5,11 +5,13 @@ type Filter =  "like" | "all"
 export interface productState {
   page:number,
   likes:number[],
+  hidden:number[],
   filter:Filter
 }
 
 const initialState: productState = {
   likes:[],
+  hidden:[],
   page:1,
   filter:"all"
 }
@@ -31,6 +33,14 @@ export const productSlice = createSlice({
     },
     setFilter(state,{payload}:PayloadAction<Filter>){
       state.filter = payload
+    },
+    addHidden(state,{payload}:PayloadAction<number>){
+      if (state.hidden){
+        state.hidden.push(payload)
+      }else{
+        state.hidden = []
+        state.hidden.push(payload)
+      }
     },
     removeLike(state,{payload}:PayloadAction<number>){
       state.likes = state.likes.filter(e=>e!=payload)
