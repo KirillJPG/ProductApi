@@ -1,10 +1,11 @@
+import { Post } from '@/model/Post'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 type Filter =  "like" | "all"
 
 export interface productState {
   page:number,
-  likes:number[],
+  likes:Post[],
   hidden:number[],
   filter:Filter
 }
@@ -23,7 +24,7 @@ export const productSlice = createSlice({
     setPage(state,{payload}:PayloadAction<number>){
       state.page = payload
     },
-    setLike(state,{payload}:PayloadAction<number>){
+    setLike(state,{payload}:PayloadAction<Post>){
       if (state.likes){
         state.likes.push(payload)
       }else{
@@ -42,8 +43,8 @@ export const productSlice = createSlice({
         state.hidden.push(payload)
       }
     },
-    removeLike(state,{payload}:PayloadAction<number>){
-      state.likes = state.likes.filter(e=>e!=payload)
+    removeLike(state,{payload}:PayloadAction<Post>){
+      state.likes = state.likes.filter(e=>e.id!=payload.id)
     },
   },
 })

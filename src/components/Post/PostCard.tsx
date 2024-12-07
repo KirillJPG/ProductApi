@@ -14,7 +14,7 @@ export function PostCard({post}:{post:Post}){
                 <div className={style.body}>{post.body}</div>
                 <div className={style.actions}>
                     <DeletePost id={post.id}/>
-                    <LikePost id={post.id}/>
+                    <LikePost post={post}/>
                 </div>
             </div>
         </Link>

@@ -29,7 +29,7 @@ export function PostInfo(){
         <div className={style.info}>
             <div className={style.actions}>
                 <UiLink color="primary" to={links.products} className={style.back}>Back</UiLink>
-                <LikePost id={data.id}/>
+                <LikePost post={data}/>
                 <DeletePost id={data.id}/>
             </div>
             <div className={style.title}>{data.title}</div>
