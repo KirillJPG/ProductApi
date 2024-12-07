@@ -4,6 +4,18 @@
     color: var(--white);
     transition: .3s;
 }
+.gray{
+    color: var(--gray);
+}
+.primary{
+    color: var(--primary);
+}
+.white{
+    color: var(--white);
+}
+.light{
+    color: var(--light);
+}
 .link:hover{
     filter: brightness(.4);
 }

@@ -1,0 +1,26 @@
+.card{
+    display: grid;
+    row-gap: 15px;
+    padding: 15px;
+    border: 2px solid var(--light);
+    border-radius: 10px;
+    grid-template-rows: max-content auto max-content;
+}
+.title{
+    font-size: 1.5rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+            line-clamp: 1; 
+        word-break: break-all;
+    -webkit-box-orient: vertical;
+}
+.body{
+    font-size: 1rem;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 4; /* number of lines to show */
+            line-clamp: 4; 
+        word-break: break-all;
+    -webkit-box-orient: vertical;
+}

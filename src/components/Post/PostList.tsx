@@ -8,7 +8,7 @@ import { BadRequest } from "@/model/BadRequest"
 
 export function PostList(){
     const page = useTSelector(state=>state.product.page)
-    const {data,isLoading,isError,error} = useGetListPostsQuery(page)
+    const {data,isLoading,isError,error} = useGetListPostsQuery(page,{pollingInterval:60000})
     console.log(data)
     if (isLoading){
         return (
@@ -24,7 +24,7 @@ export function PostList(){
         <div className={style.posts}>
             <div className={style.title}>List Post</div>
             <div className={style.list}>
-                {data?.map((e)=><PostCard key={e.id}/>)}
+                {data?.map((e)=><PostCard post={e} key={e.id}/>)}
             </div>
         </div>
     )
