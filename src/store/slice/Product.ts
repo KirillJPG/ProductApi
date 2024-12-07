@@ -8,7 +8,7 @@ export interface productState {
 
 const initialState: productState = {
   post:[],
-  page:0
+  page:1
 }
 
 export const productSlice = createSlice({

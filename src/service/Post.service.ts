@@ -8,11 +8,11 @@ export const postService = createApi({
     baseQuery:fetchBaseQuery({baseUrl:baseUrl+"/posts"}),
     reducerPath:"userApi",
     tagTypes:["post"],
-    refetchOnReconnect:true,
+    refetchOnMountOrArgChange:true,
     endpoints:(build)=> ({
         getListPosts:build.query<Post[],number>({
-            query:(page)=>`?_start=${(page-1)*10}&_end=${page*10}&_limit=10`,
-            providesTags:["post"],
+            query:(page)=>`?_page=${page}`,
+            providesTags:["post"],           
         }),
         createPost:build.mutation<Post, FormPost>({
             query:(body)=>({
@@ -27,6 +27,13 @@ export const postService = createApi({
                 url:"/"+body.id,
                 method:"PUT",
                 body
+            }),
+            invalidatesTags:["post"],
+        }),
+        deletePost:build.mutation<Post, number>({
+            query:(id)=>({
+                url:"/"+id,
+                method:"DELETE",
             }),
             invalidatesTags:["post"],
         }),
