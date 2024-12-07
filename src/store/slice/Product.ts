@@ -1,7 +1,7 @@
 import { Post } from '@/model/Post'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-type Filter =  "like" | "all"
+export type Filter =  "like" | "all"
 
 export interface productState {
   page:number,

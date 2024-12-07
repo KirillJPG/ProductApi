@@ -1,0 +1,30 @@
+.filters{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.text{
+    font-size: 1.5rem;
+}
+.filter{
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    transition: .4s;
+}
+.filter.select{
+    color: var(--white);
+    background: var(--primary);
+}
+.filter.select:hover{
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+.filter:hover{
+    color: var(--white);
+    background: var(--primary);
+}
