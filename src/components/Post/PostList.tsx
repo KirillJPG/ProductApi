@@ -7,8 +7,7 @@ import { PostCard } from "./PostCard"
 import { BadRequest } from "@/model/BadRequest"
 
 
-export default function PostList(){
-    const listDelete = useTSelector(state=>state.product.hidden)
+export function PostList(){
     const page = useTSelector(state=>state.product.page)
     const {data,isLoading,isError,error} = useGetListPostsQuery(page,{pollingInterval:60000})
 
@@ -32,7 +31,7 @@ export default function PostList(){
         <div className={style.posts}>
             <div className={style.title}>List Post</div>
             <div className={style.list}>
-                {data.filter(e=>!listDelete.includes(e.id)).map((e)=><PostCard post={e} key={e.id}/>)}
+                {data?.map((e)=><PostCard post={e} key={e.id}/>)}
             </div>
         </div>
     )
