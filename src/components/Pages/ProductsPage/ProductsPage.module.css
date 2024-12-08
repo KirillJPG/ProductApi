@@ -1,5 +1,6 @@
 .products{
     display: grid;
     gap: 15px;
-    grid-auto-rows: max-content;
+    grid-auto-rows: auto 1fr auto;
+    height: 100%;
 }

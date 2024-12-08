@@ -5,13 +5,19 @@ import { Loading } from "../ui/Loading/Loading"
 import { PostCard } from "./PostCard"
 import { BadRequest } from "@/model/BadRequest"
 import { useTSelector } from "@/hooks/useTDispatch"
+import { useEffect } from "react"
+import { useActions } from "@/hooks/useActions"
 
 
 export function PostList(){
+    const {setPosts} = useActions()
     const {filter,hidden,likes,page} = useTSelector(state=>state.product)
-    const {data,isLoading,isError,error} = filter == "all" ? useGetListPostsQuery({hidden,page}) : useGetForwardListPostsQuery(likes.length ? likes : [0])
-    console.log(`?${likes.map(e=>`id=${e}&`)}`.replace(new RegExp(",","g"),""))
-    if (isLoading){
+    const {data,isLoading,isError,error,isFetching} = filter == "all" ? useGetListPostsQuery({hidden,page}) : useGetForwardListPostsQuery(likes.length ? likes : [-1]) 
+    
+    useEffect(()=>{
+        setPosts(data!)
+    },[data])
+    if (isLoading || isFetching){
         return (
             <Loading />
         )
@@ -22,11 +28,9 @@ export function PostList(){
         )
     }
     if (!data?.length || !data){
-        return <div className={style.posts}>
-            <div className={style.title}>Not found posts</div>
-        </div>
+        return <NotFoundPosts/>
     }
-    console.log(data)
+
     return (
         <div className={style.posts}>
             <div className={style.title}>List Post</div>
@@ -35,4 +39,10 @@ export function PostList(){
             </div>
         </div>
     )
+}
+
+function NotFoundPosts(){
+    return <div className={style.posts}>
+        <div className={style.title}>Not found posts</div>
+    </div>
 }

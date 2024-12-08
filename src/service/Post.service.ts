@@ -14,11 +14,11 @@ export const postService = createApi({
     refetchOnMountOrArgChange:true,
     endpoints:(build)=> ({
         getListPosts:build.query<Post[],IGetListRequest>({
-            query:(prop)=>`?_page=${prop.page ?? 0}&${prop.hidden.map(e=>`id_ne=${e}&`)}`.replace(new RegExp(",","g"),""),
+            query:(prop)=>`?_page=${prop.page ?? 0}&${prop.hidden.map(e=>`id_ne=${e}&`)}`.replace(new RegExp(",","g"),""), // костыль из за отсутсвия обработки delete запросов
             providesTags:["post"],           
         }),
         getForwardListPosts:build.query<Post[],number[]>({
-            query:(likes)=>`?${likes.map(e=>`id=${e}&`)}`.replace(new RegExp(",","g"),""),
+            query:(likes)=>`?${likes.map(e=>`id=${e}&`)}`.replace(new RegExp(",","g"),""), 
             providesTags:["post"],           
         }),
         createPost:build.mutation<Post, FormPost>({

@@ -27,7 +27,11 @@ export const productSlice = createSlice({
       state.posts = payload
     },
     setPage(state,{payload}:PayloadAction<number>){
-      state.page = payload
+      if (state.page){
+        state.page = payload
+      }else{
+        state.page = 1
+      }
     },
     setLike(state,{payload}:PayloadAction<number>){
       if (state.likes){
@@ -52,6 +56,7 @@ export const productSlice = createSlice({
     removeLike(state,{payload}:PayloadAction<number>){
       state.likes = state.likes.filter(e=>e!=payload)
     },
+    
   },
 })
 
