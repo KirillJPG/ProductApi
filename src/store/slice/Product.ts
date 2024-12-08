@@ -43,6 +43,7 @@ export const productSlice = createSlice({
     },
     setFilter(state,{payload}:PayloadAction<Filter>){
       state.filter = payload
+      state.page = 1
     },
     addHidden(state,{payload}:PayloadAction<number>){
       state.likes = state.likes.filter(e=>e!=payload)

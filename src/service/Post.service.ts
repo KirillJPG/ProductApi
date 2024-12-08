@@ -6,7 +6,10 @@ interface IGetListRequest{
     page:number,
     hidden:number[]
 }
-
+interface IGetForwardListRequest{
+    page:number,
+    likes:number[]
+}
 export const postService = createApi({
     baseQuery:fetchBaseQuery({baseUrl:baseUrl+"/posts"}),
     reducerPath:"userApi",
@@ -17,8 +20,8 @@ export const postService = createApi({
             query:(prop)=>`?_page=${prop.page ?? 0}&${prop.hidden.map(e=>`id_ne=${e}&`)}`.replace(new RegExp(",","g"),""), // костыль из за отсутсвия обработки delete запросов
             providesTags:["post"],           
         }),
-        getForwardListPosts:build.query<Post[],number[]>({
-            query:(likes)=>`?${likes.map(e=>`id=${e}&`)}`.replace(new RegExp(",","g"),""), 
+        getForwardListPosts:build.query<Post[],IGetForwardListRequest>({
+            query:(props)=>`?_page=${props.page}&${props.likes.map(e=>`id=${e}&`)}`.replace(new RegExp(",","g"),""), 
             providesTags:["post"],           
         }),
         createPost:build.mutation<Post, FormPost>({

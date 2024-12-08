@@ -12,7 +12,7 @@ import { useActions } from "@/hooks/useActions"
 export function PostList(){
     const {setPosts} = useActions()
     const {filter,hidden,likes,page} = useTSelector(state=>state.product)
-    const {data,isLoading,isError,error,isFetching} = filter == "all" ? useGetListPostsQuery({hidden,page}) : useGetForwardListPostsQuery(likes.length ? likes : [-1]) 
+    const {data,isLoading,isError,error,isFetching} = filter == "all" ? useGetListPostsQuery({hidden,page}) : useGetForwardListPostsQuery({page,likes:likes.length ? likes : [-1]}) 
     
     useEffect(()=>{
         setPosts(data!)
