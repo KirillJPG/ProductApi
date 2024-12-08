@@ -1,16 +1,16 @@
-import { useTSelector } from "@/hooks/useTDispatch"
 import style from "./PostList.module.css"
-import { useGetListPostsQuery } from "@/service/Post.service"
+import { useGetForwardListPostsQuery, useGetListPostsQuery } from "@/service/Post.service"
 import { ErrorRequest } from "../ErrorRequest/ErrorRequest"
 import { Loading } from "../ui/Loading/Loading"
 import { PostCard } from "./PostCard"
 import { BadRequest } from "@/model/BadRequest"
+import { useTSelector } from "@/hooks/useTDispatch"
 
 
 export function PostList(){
-    const page = useTSelector(state=>state.product.page)
-    const {data,isLoading,isError,error} = useGetListPostsQuery(page,{pollingInterval:60000})
-
+    const {filter,hidden,likes,page} = useTSelector(state=>state.product)
+    const {data,isLoading,isError,error} = filter == "all" ? useGetListPostsQuery({hidden,page}) : useGetForwardListPostsQuery(likes.length ? likes : [0])
+    console.log(`?${likes.map(e=>`id=${e}&`)}`.replace(new RegExp(",","g"),""))
     if (isLoading){
         return (
             <Loading />
@@ -21,17 +21,17 @@ export function PostList(){
             <ErrorRequest error={error as BadRequest}/>
         )
     }
-    if (data == undefined){
+    if (!data?.length || !data){
         return <div className={style.posts}>
             <div className={style.title}>Not found posts</div>
         </div>
     }
-
+    console.log(data)
     return (
         <div className={style.posts}>
             <div className={style.title}>List Post</div>
             <div className={style.list}>
-                {data?.map((e)=><PostCard post={e} key={e.id}/>)}
+                {data.map((e)=><PostCard post={e} key={e.id}/>)}  
             </div>
         </div>
     )

@@ -4,16 +4,15 @@ import { useTSelector } from "@/hooks/useTDispatch"
 import LikeIcon from "@public/icon/like.svg?react"
 import clsx from "clsx"
 import { MouseEvent } from "react"
-import { Post } from "@/model/Post"
 
-export function LikePost({post}:{post:Post}){
+export function LikePost({id}:{id:number}){
     const {setLike,removeLike} = useActions()
     const likes = useTSelector(state=>state.product.likes)
-    const isLike = likes.find(e=>e.id==post.id) ? true : false
+    const isLike = likes.find(e=>e==id) ? true : false
 
     const onLike = ( e:MouseEvent<HTMLDivElement> ) => {
         e.preventDefault()
-        isLike ? removeLike(post) : setLike(post)
+        isLike ? removeLike(id) : setLike(id)
     }
 
     return (

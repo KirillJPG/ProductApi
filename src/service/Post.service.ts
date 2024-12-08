@@ -2,7 +2,10 @@ import { baseUrl } from "@/constant/api";
 import { FormEditPost, FormPost, Post } from "@/model/Post";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-
+interface IGetListRequest{
+    page:number,
+    hidden:number[]
+}
 
 export const postService = createApi({
     baseQuery:fetchBaseQuery({baseUrl:baseUrl+"/posts"}),
@@ -10,8 +13,12 @@ export const postService = createApi({
     tagTypes:["post"],
     refetchOnMountOrArgChange:true,
     endpoints:(build)=> ({
-        getListPosts:build.query<Post[],number>({
-            query:(page)=>`?_page=${page}`,
+        getListPosts:build.query<Post[],IGetListRequest>({
+            query:(prop)=>`?_page=${prop.page ?? 0}&${prop.hidden.map(e=>`id_ne=${e}&`)}`.replace(new RegExp(",","g"),""),
+            providesTags:["post"],           
+        }),
+        getForwardListPosts:build.query<Post[],number[]>({
+            query:(likes)=>`?${likes.map(e=>`id=${e}&`)}`.replace(new RegExp(",","g"),""),
             providesTags:["post"],           
         }),
         createPost:build.mutation<Post, FormPost>({
@@ -44,4 +51,4 @@ export const postService = createApi({
     }),
 
 })
-export const {useCreatePostMutation,useEditPostMutation,useGetListPostsQuery,useGetPostByIdQuery,useDeletePostMutation} = postService
+export const {useCreatePostMutation,useEditPostMutation,useGetListPostsQuery,useGetPostByIdQuery,useDeletePostMutation,useGetForwardListPostsQuery} = postService
