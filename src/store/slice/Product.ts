@@ -8,7 +8,8 @@ export interface productState {
   likes:number[],
   hidden:number[],
   filter:Filter,
-  posts:Post[]
+  posts:Post[],
+  createPost:Post[]
 }
 
 const initialState: productState = {
@@ -16,13 +17,22 @@ const initialState: productState = {
   hidden:[],
   page:1,
   filter:"all",
-  posts:[]
+  posts:[],
+  createPost:[]
 }
 
 export const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
+    createPost(state,{payload}:PayloadAction<Post>){
+      if (state.createPost){
+        state.createPost.push(payload)
+      }else{
+        state.createPost = []
+        state.createPost.push(payload)
+      }
+    },
     setPosts(state,{payload}:PayloadAction<Post[]>){
       state.posts = payload
     },

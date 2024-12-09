@@ -7,13 +7,18 @@ import { UiButton } from "../../Button/UiButton"
 import { useCreatePostMutation } from "@/service/Post.service"
 import { useNavigate } from "react-router"
 import { links } from "@/constant/links"
+import { useActions } from "@/hooks/useActions"
 
 export function CreateProductForm(){
     const {register,formState:{isValid,errors},handleSubmit} = useForm<FormPost>({mode:"all"})
-    const [createPost] = useCreatePostMutation()
+    const [addPost] = useCreatePostMutation()
+    const {createPost} = useActions()
     const navigation = useNavigate()
-    const onSubmit = (data:FormPost) =>{
-        createPost(data)
+    const onSubmit = async (formData:FormPost) =>{
+        const {data} = await addPost(formData)
+        if ( data ){
+            createPost(data)
+        }
         navigation(links.products)
     }
     return (
