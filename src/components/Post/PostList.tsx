@@ -12,6 +12,7 @@ import { useActions } from "@/hooks/useActions"
 export function PostList(){
     const {setPosts} = useActions()
     const {filter,hidden,likes,page} = useTSelector(state=>state.product)
+    const createPost = useTSelector(state=>state.product.createPost).filter(e=>likes.includes(e.id) || filter == "all")
     const {data,isLoading,isError,error,isFetching} = filter == "all" ? useGetListPostsQuery({hidden,page}) : useGetForwardListPostsQuery({page,likes:likes.length ? likes : [-1]}) 
     
     useEffect(()=>{
@@ -25,7 +26,7 @@ export function PostList(){
     if (isError){
         return(
             <ErrorRequest error={error as BadRequest}/>
-        )
+        )   
     }
     if (!data?.length || !data){
         return <NotFoundPosts/>
@@ -37,6 +38,12 @@ export function PostList(){
             <div className={style.list}>
                 {data.map((e)=><PostCard post={e} key={e.id}/>)}  
             </div>
+            {createPost.length >= 1 &&<>
+                <div className={style.title}>My Post</div>
+                <div className={style.list}>
+                    {createPost.map((e)=><PostCard post={e} key={e.id}/>)}  
+                </div>
+            </>}
         </div>
     )
 }

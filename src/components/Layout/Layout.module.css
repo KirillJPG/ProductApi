@@ -2,4 +2,5 @@
     display: grid;
     min-height: 100vh;
     grid-template-rows: 90px auto;
+    overflow-x: hidden;
 }

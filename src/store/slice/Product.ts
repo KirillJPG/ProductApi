@@ -57,6 +57,7 @@ export const productSlice = createSlice({
     },
     addHidden(state,{payload}:PayloadAction<number>){
       state.likes = state.likes.filter(e=>e!=payload)
+      state.createPost = state.createPost.filter(e=>e.id !=payload)
       if (state.hidden){
         state.hidden.push(payload)
       }else{
