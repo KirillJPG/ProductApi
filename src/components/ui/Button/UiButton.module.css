@@ -10,6 +10,7 @@
 .button:disabled{
     background: rgb(151, 151, 151);
     color: var(--white);
+    cursor: not-allowed;
 }
 .gray{
     color: var(--primary);
