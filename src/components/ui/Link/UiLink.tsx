@@ -1,4 +1,3 @@
-import { LinkHTMLAttributes } from "react"
 import style from "./UiLink.module.css"
 import { Link, LinkProps } from "react-router"
 import clsx from "clsx"

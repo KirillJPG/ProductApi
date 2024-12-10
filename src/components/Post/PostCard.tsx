@@ -4,7 +4,6 @@ import { links } from "@/constant/links"
 import { Link } from "react-router"
 import { DeletePost } from "../DeletePost/DeletePost"
 import { LikePost } from "../LikePost/LikePost"
-import { useTSelector } from "@/hooks/useTDispatch"
 
 export function PostCard({post}:{post:Post}){
     return (

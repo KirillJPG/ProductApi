@@ -1,5 +1,5 @@
 import { FormPost } from "@/model/Post"
-import { FieldError, FieldErrors, Path, RegisterOptions, UseFormRegister } from "react-hook-form"
+import {  Path, RegisterOptions,} from "react-hook-form"
 
 interface Field{
     name:Path<FormPost>,

@@ -24,7 +24,7 @@ export function CreateProductForm(){
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={style.form}>
             <div className={style.title}>Create product</div>
-            {FieldsCreateProduct.map((e,id)=> <InputField name={e.name} error={errors[e.name]} options={e.options} register={register} placeholder={e.placeholder}/>)}
+            {FieldsCreateProduct.map((e)=> <InputField name={e.name} error={errors[e.name]} options={e.options} register={register} placeholder={e.placeholder}/>)}
             <UiButton disabled={!isValid} color="primary">Create</UiButton>
         </form>
     )

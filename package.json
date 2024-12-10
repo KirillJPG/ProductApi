@@ -3,15 +3,18 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://KirillJPG.github.io/ProductApi",
   "scripts": {
     "dev": "vite --port=4400",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy":"npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.4.0",
     "clsx": "^2.1.1",
+    "gh-pages": "^6.2.0",
     "json-server": "^1.0.0-beta.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

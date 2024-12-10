@@ -1,6 +1,6 @@
 import { useGetAllPostsQuery } from "@/service/Post.service"
 import style from "./Search.module.css"
-import { InputHTMLAttributes, useState } from "react"
+import { useState } from "react"
 import { Loading } from "../ui/Loading/Loading"
 import { UiLink } from "../ui/Link/UiLink"
 import { links } from "@/constant/links"

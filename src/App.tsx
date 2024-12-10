@@ -12,7 +12,7 @@ export const ProductPage = lazy(()=>import("./components/Pages/ProductPage/Produ
 
 function App() {
   return (
-    <Routes>
+    <Routes >
       <Route path={links.home} element={<Layout/>}>
         <Route  path={links.home}       element={<HomePage />}/>
         <Route  path={links.products}   element={<ProductsPage />}/>
