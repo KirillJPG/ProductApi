@@ -1,0 +1,1 @@
+import{j as t}from"./index-B-HWUcWs.js";const e="_container_y5ddg_1",o="_title_y5ddg_11",n={container:e,title:o};function s(){return t.jsx("div",{className:n.container,children:t.jsx("div",{className:n.title,children:"Not Found(404)"})})}export{s as default};

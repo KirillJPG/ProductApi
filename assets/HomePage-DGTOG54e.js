@@ -1,0 +1,1 @@
+import{j as e}from"./index-B-HWUcWs.js";const o="_home_1qgtd_1",s="_title_1qgtd_7",t={home:o,title:s};function m(){return e.jsx("div",{className:t.home,children:e.jsx("div",{className:t.title,children:" Home page"})})}export{m as default};
