@@ -24,6 +24,10 @@ export const postService = createApi({
             query:(props)=>`?_page=${props.page}&${props.likes.map(e=>`id=${e}&`)}`.replace(new RegExp(",","g"),""), 
             providesTags:["post"],           
         }),
+        getAllPosts:build.query<Post[],null>({
+            query:()=>"", 
+            providesTags:["post"],           
+        }),
         createPost:build.mutation<Post, FormPost>({
             query:(body)=>({
                 url:"/",
@@ -54,4 +58,4 @@ export const postService = createApi({
     }),
 
 })
-export const {useCreatePostMutation,useEditPostMutation,useGetListPostsQuery,useGetPostByIdQuery,useDeletePostMutation,useGetForwardListPostsQuery} = postService
+export const {useCreatePostMutation,useEditPostMutation,useGetListPostsQuery,useGetPostByIdQuery,useDeletePostMutation,useGetForwardListPostsQuery,useGetAllPostsQuery} = postService
